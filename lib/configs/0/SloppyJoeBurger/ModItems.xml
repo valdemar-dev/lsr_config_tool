@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PossibleItems []>
 
-<PossibleItems>
+<ModItems>
     <FoodItems>
         <FoodItem>
             <Name>Sloppy Joe Burger</Name>
@@ -29,4 +29,43 @@
             <AnimationCycles>15</AnimationCycles>
         </FoodItem>
     </FoodItems>
-</PossibleItems>
+    <FlashlightItems>
+        <FlashlightItem>
+            <Name>TAG-HARD Flashlight</Name>
+            <Description>
+                Need to beat a suspect, but don't have your nightstick? Look no further.
+            </Description>
+            <ItemType>Equipment</ItemType>
+            <ItemSubType>Flashlight</ItemSubType>
+            <MeasurementName>Item</MeasurementName>
+            <AmountPerPackage>1</AmountPerPackage>
+            <ModelItemID>prop_cs_police_torch</ModelItemID>
+            <IsPossessionIllicit>false</IsPossessionIllicit>
+            <IsPublicUseIllegal>false</IsPublicUseIllegal>
+            <PercentLostOnUse>0</PercentLostOnUse>
+            <ConsumeOnPurchase>false</ConsumeOnPurchase>
+            <CanConsume>false</CanConsume>
+            <FindPercentage>1</FindPercentage>
+            <PoliceFindDuringPlayerSearchPercentage>85</PoliceFindDuringPlayerSearchPercentage>
+            <LightFollowsCamera>true</LightFollowsCamera>
+            <AllowPropRotation>true</AllowPropRotation>
+            <UseFakeEmissive>true</UseFakeEmissive>
+            <PitchMax>25</PitchMax>
+            <PitchMin>-25</PitchMin>
+            <HeadingMax>30</HeadingMax>
+            <HeadingMin>-30</HeadingMin>
+            <EmissiveDistance>75</EmissiveDistance>
+            <EmissiveBrightness>0.75</EmissiveBrightness>
+            <EmissiveHardness>0</EmissiveHardness>
+            <EmissiveRadius>10</EmissiveRadius>
+            <EmissiveFallOff>1</EmissiveFallOff>
+            <FakeEmissiveDistance>0.4</FakeEmissiveDistance>
+            <FakeEmissiveBrightness>5</FakeEmissiveBrightness>
+            <FakeEmissiveHardness>0</FakeEmissiveHardness>
+            <FakeEmissiveRadius>100</FakeEmissiveRadius>
+            <FakeEmissiveFallOff>1</FakeEmissiveFallOff>
+            <IsCellphone>false</IsCellphone>
+            <CanSearch>true</CanSearch>
+        </FlashlightItem>
+    </FlashlightItems>
+</ModItems>
