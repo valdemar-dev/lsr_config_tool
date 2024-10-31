@@ -1,0 +1,17 @@
+
+so basically you want:
+
+old config:
+```xml
+<settings>
+    <update_me>0</update_me>
+    <dont_touch_me>123456789</dont_touch_me>
+</settings>
+```
+
+config to patch in:
+```xml
+<settings>
+    <update_me>2</update_me>
+</settings>
+```
