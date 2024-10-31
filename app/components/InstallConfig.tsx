@@ -26,6 +26,8 @@ const installConfig = async (userFiles: File[], config: Config) => {
 
             const addonFileKeys = Object.keys(parsedXML);
             const rootElement = parsedXML[addonFileKeys[0]];
+
+            console.log(rootElement);
         })
     })
 }

@@ -18,8 +18,8 @@ type Config = {
     addons: Addon[];
 }
 ```
-`modVersion` should be the version of LSR you made the config for. It's important to note this in-case some options become deprecated, or wish for different datatypes / value ranges.  
-`id` should be a 1-increment integer starting at 0 (the default config). This is also the folder where your config lives.  
+`modVersion` should be the version of LSR you made the config for. It's important to note this in-case some options become deprecated or wish for different datatypes / value ranges.  
+`id` should be a 1-increment integer starting at 0 (the default config). This is also the name of the folder where your config lives `/lib/your_id`.  
 
 ### Addons 
 An addon should be a compartmentalizable portion of your config.  
@@ -37,12 +37,12 @@ type Addon = {
     isRequired: boolean;
 }
 ```
-`id` should start at 0, and increase by 1 for every addon you have in *your* config.
-`addonFolderName` is where the config XMLs are located for this addon.
-`isRequired` determines whether or not the user is required to have this addon enabled when installing your config.
+- `id` should start at 0, and increase by 1 for every addon you have in *your* config.  
+- `addonFolderName` is where the config XMLs are located for this addon.  
+- `isRequired` determines whether or not the user is required to have this addon enabled when installing your config.  
 
 ## Example Config
-Below is the default config, as seen in `./lib/configs/configList.ts`.  
+Below is an example config `Burger Shot Pack`, as seen in `./lib/configs/configList.ts`.  
 ```ts 
     {
         id: 0,
@@ -66,7 +66,7 @@ Below is the default config, as seen in `./lib/configs/configList.ts`.
     }
 ```
 It contains all the necessary information to create a config.  
-It's only addon, the "Sloppy Joe Burger", an it's config files can be found at `./lib/configs/0/SloppyJoeBurger/`.
+It's only addon, the "Sloppy Joe Burger", and it's config files can be found at `./lib/configs/0/SloppyJoeBurger/`.
 
 ## Important Notes
 If your config re-writes things, please **tell the user** in your config/addon description what you are re-writing.  
@@ -148,10 +148,14 @@ For example, in the `SloppyJoeBurger`'s `ModItems.xml`:
 ```
 
 ### How the Updater works.
-First, the program parses an XML you have provided in an Addon. We'll take the `SloppyJoeBurger`'s `ModItems.xml`  
-By parsing, it turns into a big object.  
+#### Parsing
+The updater starts by parsing every config file provided by the user.  
 
-It starts by looking at the filename. In our case that's `ModItems.xml`.  
+It then parses an XML you have provided in an Addon (starting from addonFolderFiles[0] and going through all of them).  
+We'll take the `SloppyJoeBurger`'s `ModItems.xml`.  
+By parsing, it turns into a big object that we can work with.  
+
+Then it looks at the filename. In our case that's `ModItems.xml`.  
 So, it sets the config to edit as the users provided `ModItems.xml`.  
 
 It then selects the first child or the root element. So, `<FoodItems>` for us.  
