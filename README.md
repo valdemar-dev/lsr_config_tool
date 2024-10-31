@@ -168,5 +168,4 @@ So, to add a `<FlashlightItem>`, only define `<FlashlightItems>`, and not all pa
 You cannot define multiple levels of abstraction due to just limitations of the code essentially.  
 The updater does `Object.find(key)`, and takes all children, and either appends / updates.  
 If you were to have multiple children, it just like wouldn't work at all lol.  
-It could be possible to define the entire tree, and to allow for individual editing of single values, but that would be a lot more computationally expensive,  
-since you'd have to iterate through every single value of the *users* `ModItems.xml` instead of the one in the Config.
+It could be possible to define the entire tree, and to allow for individual editing of single values, but that would be a lot more computationally expensive, since you'd have to iterate through every single value of the *users* `ModItems.xml` instead of the one in the Config.
