@@ -33,6 +33,7 @@ type Addon = {
     name: string;
     description: string;
     addonFolderName: string;
+    addonFolderFiles: string[];
     isRequired: boolean;
 }
 ```
@@ -56,6 +57,9 @@ Below is the default config, as seen in `./lib/configs/configList.ts`.
                 name: "Sloppy Joe Burger",
                 description: "The Sloppy Joe Burger.",
                 addonFolderName: "SloppyJoeBurger",
+                addonFolderFiles: [
+                    "ModItems.xml",
+                ],
                 isRequired: true,
             },
         ]
@@ -151,11 +155,18 @@ It starts by looking at the filename. In our case that's `ModItems.xml`.
 So, it sets the config to edit as the users provided `ModItems.xml`.  
 
 It then selects the first child or the root element. So, `<FoodItems>` for us.  
-It's important to follow the structure of the default XML's.  
-
+It then finds the element in the users provided `ModItems.xml`.  
 Then, it iterates through the children of food items, and checks their "keys", against a given list of allowed keys.  
 For now, just `<(anything)Name>` and `<(anything)ID>`.  
 
 If it does not find an element in the list that contains the key, it appends it.  
 
 It then does this until the root element has no more children to iterate through.  
+
+NOTE: You must ONLY have one level of abstractions.  
+So, to add a `<FlashlightItem>`, only define `<FlashlightItems>`, and not all parent elements (which may or may not exist).
+You cannot define multiple levels of abstraction due to just limitations of the code essentially.  
+The updater does `Object.find(key)`, and takes all children, and either appends / updates.  
+If you were to have multiple children, it just like wouldn't work at all lol.  
+It could be possible to define the entire tree, and to allow for individual editing of single values, but that would be a lot more computationally expensive,  
+since you'd have to iterate through every single value of the *users* `ModItems.xml` instead of the one in the Config.

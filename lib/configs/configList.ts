@@ -1,13 +1,3 @@
-type Config = {
-    id: number;
-    title: string;
-    description: string;
-    author: string;
-    modVersion: string;
-    createdAt: Date;
-    addons: Addon[];
-}
-
 const configList: Config[] = [
     {
         id: 0,
@@ -22,6 +12,9 @@ const configList: Config[] = [
                 name: "Sloppy Joe Burger",
                 description: "The Sloppy Joe Burger.",
                 addonFolderName: "SloppyJoeBurger",
+                addonFolderFiles: [
+                    "ModItems.xml",
+                ],
                 isRequired: true,
             },
         ]

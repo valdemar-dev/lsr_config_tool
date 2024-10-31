@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PossibleItems []>
 
-<ModItems>
+<PossibleItems>
     <FoodItems>
         <FoodItem>
             <Name>Sloppy Joe Burger</Name>
@@ -68,4 +67,4 @@
             <CanSearch>true</CanSearch>
         </FlashlightItem>
     </FlashlightItems>
-</ModItems>
+</PossibleItems>
