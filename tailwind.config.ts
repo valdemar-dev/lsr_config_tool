@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "playfair": ["Playfair Display"],
+        "inter": ["Inter"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
