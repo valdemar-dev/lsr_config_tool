@@ -5,11 +5,27 @@ This is a simple NextJS website to provide an user-friendly way to install custo
 
 
 ## Add a Config
-Are you a config creator?  
-Check out `./lib/configs/defaultConfig/metadata.xml` for an example config.  
+I've tried to make adding a custom config as easy as I could, with my limited knowledge of LSR.  
   
-## configs
-A config is a list of Addons that modify LSR's config files.  
-You could have a config that adds for example, the Crips and Bloods from LA.  
+The list of available configurations is in `./lib/configs/configList.ts`.  
+  
+Configs have a very simple type.
+```ts 
+type Config = {
+    id: number;
+    title: string;
+    description: string;
+    author: string;
+    modVersion: string;
+    createdAt: Date;
+    addons: Addon[];
+}
+```
+`modVersion` should be the version of LSR you made the config for. It's important to note this in-case some options become deprecated, or wish for different datatypes / value ranges.  
+### Addons 
+An addon should be a compartmentalizable portion of your config.  
+Each addon contains it's own config files, so `Gangs.xml`, `Locations.xml` etc.  
+You can also make each addon optional, if you wish.  
 
-You would then separate Crips into an addon, and Bloods into an addon.
+As an example, you could have a "Bloods" addon in your config.
+This could contain all the necessary config files to establish the peds that are spawned, the gangs territory, etc.
