@@ -1,6 +1,6 @@
 "use client";
 
-import configList from "@/lib/configs/configList";
+import configList from "@/public/configs/configList";
 import installConfig from "@/lib/installConfig";
 import { Dispatch, SetStateAction, useState } from "react";
 import ConfigComponent from "./Config";

@@ -1,6 +1,5 @@
 import { XMLBuilder, XMLParser } from "fast-xml-parser";
 import { saveAs } from 'file-saver';
-import getParsedFromPath from "./getParsedFromPath";
 
 // list of "id" keys used to identify things in config files
 const idKeys = [
@@ -222,7 +221,7 @@ const installConfig = async (userFiles: File[], config: Config, wantedAddons: nu
         for (let i = 0; i < addon.addonFolderFiles.length; i++) {
             const fileName = addon.addonFolderFiles[i];
 
-            console.log(`%cEntered addon file: ${fileName}. Path: /lib/configs/${config.id}/${addon.addonFolderName}/${fileName}`, "color: skyblue; font-size: 14px;");
+            console.log(`%cEntered addon file: ${fileName}. Path: /public/configs/${config.id}/${addon.addonFolderName}/${fileName}`, "color: skyblue; font-size: 14px;");
 
             const userConfigFile = await parseUserConfigFile(fileName, userFiles, fileReader);
             if (!userConfigFile) {
@@ -233,9 +232,13 @@ const installConfig = async (userFiles: File[], config: Config, wantedAddons: nu
 
             console.log(`%cParsed user file: ${fileName}`, "color: blueviolet; font-size: 14px;")
 
-            const customConfigFilePath = `/lib/configs/${config.id}/${addon.addonFolderName}/${fileName}`;
+            const customConfigFilePath = `/configs/${config.id}/${addon.addonFolderName}/${fileName}`;
 
-            const customConfigFile = await getParsedFromPath(customConfigFilePath )
+            const customConfigRes = await fetch(customConfigFilePath);
+            const customConfigXML = await customConfigRes.text();
+
+            const parser = new XMLParser();
+            const customConfigFile = parser.parse(customConfigXML);
 
             const customConfigFileKeys = Object.keys(customConfigFile);
 

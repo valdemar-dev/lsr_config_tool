@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, } from "react";
 import Image from "next/image";
-import configList from "@/lib/configs/configList";
+import configList from "@/public/configs/configList";
 
 const ConfigList = ({
     setSelectedConfigId,
