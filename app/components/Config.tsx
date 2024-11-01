@@ -43,7 +43,7 @@ const ConfigComponent = ({
                     </h4>
 
                     <p className="opacity-80 text-sm">
-                        "{config.description}"
+                        &quot;{config.description}&quot;
                     </p>
                 </div>
             </div>

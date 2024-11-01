@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, } from "react";
 import Image from "next/image";
 import configList from "@/lib/configs/configList";
 
@@ -66,7 +66,7 @@ const ConfigList = ({
                                 </h4>
 
                                 <p className="opacity-80 text-sm">
-                                    "{config.description}"
+                                    &quot;{config.description}&quot;
                                 </p>
                             </div>
 

@@ -1,5 +1,3 @@
-import path from "path";
-import fs from "fs";
 import { XMLBuilder, XMLParser } from "fast-xml-parser";
 import { saveAs } from 'file-saver';
 import getParsedFromPath from "./getParsedFromPath";
@@ -112,7 +110,7 @@ const addToUserConfigWithID = (
     },
 ) => {
     if (Array.isArray(userConfigCategoryEntries)) {
-        let userConfigCategoryEntry = userConfigCategoryEntries.find(entry => {
+        const userConfigCategoryEntry = userConfigCategoryEntries.find(entry => {
             const value = entry[customConfigCategoryEntryIdKey.key];
 
             if (!value) {

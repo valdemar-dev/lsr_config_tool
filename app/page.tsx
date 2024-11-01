@@ -1,8 +1,6 @@
 "use client";
 
-import { XMLParser } from "fast-xml-parser";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-import configList from "@/lib/configs/configList";
+import { useState } from "react";
 import ConfigList from "./components/ConfigList";
 import RequestUserConfig from "./components/RequestUserConfig";
 import InstallConfig from "./components/InstallConfig";
@@ -62,8 +60,6 @@ const configFileNames = [
 ];
 
 export default function Home() {
-    const [parser] = useState(new XMLParser());
-
     const [userConfigFiles, setUserConfigFiles] = useState<File[]>();
 
     const [selectedConfigId, setSelectedConfigId] = useState<number | null>(null);
