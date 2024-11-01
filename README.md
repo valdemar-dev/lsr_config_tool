@@ -4,7 +4,7 @@ This is a simple web-app for installing LSR configs with a GUI.
 ## Add a Config
 I've tried to make adding a custom config as easy as I could, with my limited knowledge of LSR.  
   
-The list of available configurations is in `./lib/configs/configList.ts`.  
+The list of available configurations is in `./public/configs/configList.ts`.  
   
 Configs have a very simple type.
 ```ts 
@@ -19,7 +19,7 @@ type Config = {
 }
 ```
 `modVersion` should be the version of LSR you made the config for. It's important to note this in-case some options become deprecated or wish for different datatypes / value ranges.  
-`id` should be a 1-increment integer starting at 0 (the default config). This is also the name of the folder where your config lives `/lib/your_id`.  
+`id` should be a 1-increment integer starting at 0 (the default config). This is also the name of the folder where your config lives `/public/configs/your_id`.  
 
 ### Addons 
 An addon should be a compartmentalizable portion of your config.  
@@ -42,7 +42,7 @@ type Addon = {
 - `isRequired` determines whether or not the user is required to have this addon enabled when installing your config. You must always have at least one required addon.  
 
 ## Example Config
-Below is an example config `Burger Shot Pack`, as seen in `./lib/configs/configList.ts`.  
+Below is an example config `Burger Shot Pack`, as seen in `./public/configs/configList.ts`.  
 ```ts 
     {
         id: 0,
@@ -66,7 +66,7 @@ Below is an example config `Burger Shot Pack`, as seen in `./lib/configs/configL
     }
 ```
 It contains all the necessary information to create a config.  
-It's only addon, the "Sloppy Joe Burger", and it's config files can be found at `./lib/configs/0/SloppyJoeBurger/`.
+It's only addon, the "Sloppy Joe Burger", and it's config files can be found at `./public/configs/0/SloppyJoeBurger/`.
 
 ## Important Notes
 If your config re-writes things, please **tell the user** in your config/addon description what you are re-writing.  
