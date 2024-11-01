@@ -18,7 +18,7 @@ const RequestUserConfig = ({
     };
 
     return (
-        <div className="flex w-full h-screen justify-center mt-20">
+        <div className="flex w-full h-screen justify-center pt-20">
             <div className="max-w-[900px] w-full mx-4">
                 <div className="mb-8">
                     <h1 className="text-4xl font-bold mb-4 font-playfair">LSR Config Addon Tool</h1>
@@ -28,7 +28,7 @@ const RequestUserConfig = ({
                     </p>
                 </div>
 
-                <div className="flex flex-col gap-4 items-center justify-center aspect-video rounded-xl border-2 border-zinc-700 bg-zinc-800 bg-opacity-10 w-full relative hover:bg-opacity-80 duration-200">
+                <div className="flex flex-col gap-4 items-center justify-center aspect-video rounded-sm border-[1px] border-zinc-800 bg-opacity-10 bg-black w-full relative hover:bg-opacity-30 duration-200">
                     <div className="flex items-center gap-3">
                         <Image
                             src={"/images/icons/xml.svg"}
@@ -44,10 +44,10 @@ const RequestUserConfig = ({
 
                     <div className="flex flex-col items-center gap-1">
                         <p className="text-sm opacity-75">
-                            Navigate to this directory, choose every XML config file, and drop it here.
+                            {"Drag & drop your config files from the below directory in here."}
                         </p>
 
-                        <span className="text-sm font-mono p-1 bg-black bg-opacity-10 rounded-md">
+                        <span className="text-sm font-mono p-1 px-2 bg-black bg-opacity-30 rounded-sm">
                             Grand Theft Auto V/Plugins/LosSantosRED/
                         </span>
                     </div>

@@ -5,6 +5,9 @@
     </FoodItems>
     <FlashlightItems>
         <FlashlightItem>
+            <Name>NON WORKING ITEM</Name>
+        </FlashlightItem>
+        <FlashlightItem>
             <Name>TAG-HARD Flashlight</Name>
         </FlashlightItem>
     </FlashlightItems>

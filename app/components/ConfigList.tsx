@@ -99,6 +99,10 @@ const ConfigList = ({
                                     })}
                                 </div>
                             </div>
+
+                            <div className="mt-auto ml-auto text-xs opacity-50">
+                                Published - {config.createdAt.toLocaleDateString()}
+                            </div>
                         </div>
                     </div>
                 )

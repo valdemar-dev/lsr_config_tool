@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ConfigList from "./components/ConfigList";
 import RequestUserConfig from "./components/RequestUserConfig";
 import InstallConfig from "./components/InstallConfig";
@@ -82,6 +82,20 @@ export default function Home() {
         )
     }
 
+    const handleUserFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
+        const files = event.currentTarget.files;
+
+        if (!files) {
+            return;
+        }
+
+
+        const filesAsArray = Array.from(files);
+        const allFilesAsArray = [...userConfigFiles, ...filesAsArray];
+
+        setUserConfigFiles(Array.from(new Map(allFilesAsArray.map((file) => [file.name, file])).values()));
+    };
+ 
     return (
         <main className="w-full h-screen overflow-x-hidden select-none">
             <div className="flex justify-center mt-20">
@@ -95,14 +109,27 @@ export default function Home() {
                     </div>
 
                     <div className="mb-20">
-                        <div className="flex items-center gap-1 mb-2">
-                            <h4 className="font-inter font-bold uppercase text-xs">
-                                files selected
-                            </h4>
+                        <div className="flex gap-6">
+                            <div className="flex items-center gap-1 mb-2">
+                                <h4 className="font-inter font-bold uppercase text-xs">
+                                    files selected
+                                </h4>
 
-                            <p className="text-xs opacity-50">
-                                ({userConfigFiles.length})
-                            </p>
+                                <p className="text-xs opacity-50">
+                                    ({userConfigFiles.length})
+                                </p>
+                            </div>
+
+                            <div className="relative px-4 py-2 rounded-sm border-[1px] border-zinc-800 bg-black bg-opacity-10 text-xs uppercase font-bold">
+                                Add Files
+
+                                <input
+                                    className="opacity-0 absolute inset-0 hover:cursor-pointer"
+                                    type="file"
+                                    multiple={true}
+                                    onChange={handleUserFileUpload}
+                                />
+                            </div>
                         </div>
 
                         <MappedUserFiles files={userConfigFiles}/>
@@ -115,7 +142,7 @@ export default function Home() {
 
                                 <p className="text-sm opacity-75 mb-4"> 
                                     You have selected only {userConfigFiles.length} files out of {configFileNames.length} known config files.<br/>
-                                    Please include <b>all</b> config files, or they program may not work properly.
+                                    It's recommended to include <b>all</b> config files, or they program may not work properly.
                                 </p>
 
                                 <details className="duration-300">
