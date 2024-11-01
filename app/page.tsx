@@ -142,7 +142,7 @@ export default function Home() {
 
                                 <p className="text-sm opacity-75 mb-4"> 
                                     You have selected only {userConfigFiles.length} files out of {configFileNames.length} known config files.<br/>
-                                    It's recommended to include <b>all</b> config files, or they program may not work properly.
+                                    It&apos;s recommended to include <b>all</b> config files, or they program may not work properly.
                                 </p>
 
                                 <details className="duration-300">
