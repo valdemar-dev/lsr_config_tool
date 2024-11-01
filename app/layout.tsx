@@ -18,6 +18,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://lsr-configs/pages.dev'),
     title: "LSR Config Tool",
     description: "Easily add custom configs to your LSR, whilst preserving your pre-existing ones.",
     openGraph: {
