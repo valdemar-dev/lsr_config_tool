@@ -44,7 +44,7 @@ const RequestUserConfig = ({
 
                     <div className="flex flex-col items-center gap-1">
                         <p className="text-sm opacity-75">
-                            Navigate to this directory, choose every XML file, and drop it here.
+                            Navigate to this directory, choose every XML config file, and drop it here.
                         </p>
 
                         <span className="text-sm font-mono p-1 bg-black bg-opacity-10 rounded-md">

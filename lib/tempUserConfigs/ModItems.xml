@@ -1,0 +1,11 @@
+<!DOCTYPE PossibleItems []>
+
+<PossibleItems>
+    <FoodItems> 
+    </FoodItems>
+    <FlashlightItems>
+        <FlashlightItem>
+            <Name>TAG-HARD Flashlight</Name>
+        </FlashlightItem>
+    </FlashlightItems>
+</PossibleItems>

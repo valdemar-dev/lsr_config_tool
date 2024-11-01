@@ -81,21 +81,23 @@ const ConfigList = ({
                                     </p>
                                 </div>
 
-                                {config.addons.map((addon, index) => {
-                                    return (
-                                        <div 
-                                            key={index}
-                                        >
-                                            <h5 className="text-sm">
-                                                {addon.name}
-                                            </h5>
+                                <div className="flex flex-col gap-2">
+                                    {config.addons.map((addon, index) => {
+                                        return (
+                                            <div 
+                                                key={index}
+                                            >
+                                                <h5 className="text-sm">
+                                                    {addon.name}
+                                                </h5>
 
-                                            <p className="text-xs opacity-50">
-                                                {addon.description}
-                                            </p>
-                                        </div>
-                                    )
-                                })}
+                                                <p className="text-xs opacity-50">
+                                                    {addon.description}
+                                                </p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -10,12 +10,22 @@ const configList: Config[] = [
             {
                 id: 0,
                 name: "Sloppy Joe Burger",
-                description: "The Sloppy Joe Burger.",
+                description: "Adds The Sloppy Joe Burger & TAG-HARD Flashlight.",
                 addonFolderName: "SloppyJoeBurger",
                 addonFolderFiles: [
                     "ModItems.xml",
                 ],
                 isRequired: true,
+            },
+            {
+                id: 1,
+                name: "Nuka-Cola",
+                description: "Adds the Nuka-Cola Item.",
+                addonFolderName: "NukaCola",
+                addonFolderFiles: [
+                    "ModItems.xml",
+                ],
+                isRequired: false,
             },
         ]
     }

@@ -1,0 +1,31 @@
+<!DOCTYPE PossibleItems []>
+
+<PossibleItems>
+    <FoodItems>
+        <FoodItem>
+            <Name>Nuka-Cola</Name>
+            <Description>Feeling parched in the harsh realities of the wasteland? Look no further than Nuka-Cola—the fizzy, invigorating beverage that’s perfect for any Vault Dweller on the go! With its unique blend of flavors, including a splash of cherry, Nuka-Cola is your ticket to a refreshing escape.</Description>
+            <ItemType>Food</ItemType>
+            <ItemSubType>Entree</ItemSubType>
+            <MeasurementName>Item</MeasurementName>
+            <AmountPerPackage>1</AmountPerPackage>
+            <ModelItemID>prop_cs_burger_01</ModelItemID>
+            <IsPossessionIllicit>true</IsPossessionIllicit>
+            <IsPublicUseIllegal>true</IsPublicUseIllegal>
+            <PercentLostOnUse>0</PercentLostOnUse>
+            <ConsumeOnPurchase>false</ConsumeOnPurchase>
+            <CanConsume>true</CanConsume>
+            <FindPercentage>0</FindPercentage>
+            <PoliceFindDuringPlayerSearchPercentage>100</PoliceFindDuringPlayerSearchPercentage>
+            <IntoxicantName />
+            <IntoxicationPerInterval>0.2</IntoxicationPerInterval>
+            <HealthChangeAmount>35</HealthChangeAmount>
+            <ArmorChangeAmount>0</ArmorChangeAmount>
+            <HungerChangeAmount>35</HungerChangeAmount>
+            <ThirstChangeAmount>0</ThirstChangeAmount>
+            <SleepChangeAmount>0</SleepChangeAmount>
+            <AlwaysChangesHealth>false</AlwaysChangesHealth>
+            <AnimationCycles>15</AnimationCycles>
+        </FoodItem>
+    </FoodItems>
+</PossibleItems>

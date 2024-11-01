@@ -39,7 +39,7 @@ type Addon = {
 ```
 - `id` should start at 0, and increase by 1 for every addon you have in *your* config.  
 - `addonFolderName` is where the config XMLs are located for this addon.  
-- `isRequired` determines whether or not the user is required to have this addon enabled when installing your config.  
+- `isRequired` determines whether or not the user is required to have this addon enabled when installing your config. You must always have at least one required addon.  
 
 ## Example Config
 Below is an example config `Burger Shot Pack`, as seen in `./lib/configs/configList.ts`.  
