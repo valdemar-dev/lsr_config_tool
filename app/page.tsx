@@ -4,7 +4,6 @@ import { ChangeEvent, useState } from "react";
 import ConfigList from "./components/ConfigList";
 import RequestUserConfig from "./components/RequestUserConfig";
 import InstallConfig from "./components/InstallConfig";
-import Link from "next/link";
 
 const MappedUserFiles = ({
     files,
