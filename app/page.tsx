@@ -4,6 +4,7 @@ import { ChangeEvent, useState } from "react";
 import ConfigList from "./components/ConfigList";
 import RequestUserConfig from "./components/RequestUserConfig";
 import InstallConfig from "./components/InstallConfig";
+import Link from "next/link";
 
 const MappedUserFiles = ({
     files,
@@ -89,13 +90,12 @@ export default function Home() {
             return;
         }
 
-
         const filesAsArray = Array.from(files);
         const allFilesAsArray = [...userConfigFiles, ...filesAsArray];
 
         setUserConfigFiles(Array.from(new Map(allFilesAsArray.map((file) => [file.name, file])).values()));
-    };
- 
+    }; 
+
     return (
         <main className="w-full h-screen overflow-x-hidden select-none">
             <div className="flex justify-center mt-20">
