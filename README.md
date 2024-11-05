@@ -4,44 +4,89 @@ This is a simple web-app for installing LSR configs with a GUI.
 ## Add a Config
 I've tried to make adding a custom config as easy as I could, with my limited knowledge of LSR.  
   
-The list of available configurations is in `./public/configs/configList.ts`.  
-  
-Configs have a very simple type.
-```ts 
-type Config = {
-    id: number;
-    title: string;
-    description: string;
-    author: string;
-    modVersion: string;
-    createdAt: Date;
-    addons: Addon[];
-}
-```
-`modVersion` should be the version of LSR you made the config for. It's important to note this in-case some options become deprecated or wish for different datatypes / value ranges.  
-`id` should be a 1-increment integer starting at 0 (the default config). This is also the name of the folder where your config lives `/public/configs/your_id`.  
+I suggest looking at `./public/configs/configList.ts` to get a general idea of how configurations are structured.
 
-### Addons 
-An addon should be a compartmentalizable portion of your config.  
-Each addon contains it's own config files, so `Gangs.xml`, `Locations.xml` etc.  
-You can also make each addon optional, if you wish.  
+### Splitting a Config
+Let's say you have a config thats called "LC Gang Pack" that adds 5 different gans. We'll call these gang A, B, C, D, E  
+A user may only want *some*, not all of these gangs.  
+Therefore, it's advised to **split up** you configuration into multiple **addons**.  
   
-Addons are typed like so:
-```ts 
-type Addon = {
-    id: number;
-    name: string;
-    description: string;
-    addonFolderName: string;
-    addonFolderFiles: string[];
-    isRequired: boolean;
-}
-```
-- `id` should start at 0, and increase by 1 for every addon you have in *your* config.  
-- `addonFolderName` is where the config XMLs are located for this addon.  
-- `isRequired` determines whether or not the user is required to have this addon enabled when installing your config. You must always have at least one required addon.  
+The addons for this "LC Gang Pack" could look something like this.  
+  
+LC Gang Pack:
+- Gang A
+- Gang B
+- Gang C
+- Gang D
+- Gang E 
 
-## Example Config
+With your configs split up the user may at the click of a button decide which parts of your config to install. Cool, right?  
+
+### Addons
+An addon is just a folder with a name of your choosing, (see `/public/configs/0/` for examples) that contains some XML files, like `Gangs.xml`, `ModItems.xml`, etc.  
+Every addon of your config should have it's *own config files*  
+  
+Take the time now to split up your config into addon folders.
+  
+As an example, the "LC Gang Pack", split up into folders might look something like this.
+1. /GANG_A/
+  - Gangs.xml
+2. /GANG_B/
+  - Gangs.xml
+3. /GANG_C/
+  - Gangs.xml
+4. /GANG_D/
+  - Gangs.xml
+5. /GANG_E/
+  - Gangs.xml
+
+#### Addon Files
+When creating the files for your addon, only include the top-level element, and whichever element group you wish to add to.  
+  
+For example, to add the Sloppy Joe Burger:
+```xml
+<PossibleItems>
+    <FoodItems>
+        <FoodItem>
+            <Name>Sloppy Joe Burger</Name>
+            <Description>Burger made of such low quality it's banned in all 50 states.</Description>
+            <ItemType>Food</ItemType>
+            <ItemSubType>Entree</ItemSubType>
+            <MeasurementName>Item</MeasurementName>
+            <AmountPerPackage>1</AmountPerPackage>
+            <ModelItemID>prop_cs_burger_01</ModelItemID>
+            <IsPossessionIllicit>true</IsPossessionIllicit>
+            <IsPublicUseIllegal>true</IsPublicUseIllegal>
+            <PercentLostOnUse>0</PercentLostOnUse>
+            <ConsumeOnPurchase>false</ConsumeOnPurchase>
+            <CanConsume>true</CanConsume>
+            <FindPercentage>0</FindPercentage>
+            <PoliceFindDuringPlayerSearchPercentage>100</PoliceFindDuringPlayerSearchPercentage>
+            <IntoxicantName />
+            <IntoxicationPerInterval>0.2</IntoxicationPerInterval>
+            <HealthChangeAmount>35</HealthChangeAmount>
+            <ArmorChangeAmount>0</ArmorChangeAmount>
+            <HungerChangeAmount>35</HungerChangeAmount>
+            <ThirstChangeAmount>0</ThirstChangeAmount>
+            <SleepChangeAmount>0</SleepChangeAmount>
+            <AlwaysChangesHealth>false</AlwaysChangesHealth>
+            <AnimationCycles>15</AnimationCycles>
+        </FoodItem>
+    </FoodItems>
+</PossibleItems>
+```
+  
+Here, `PossibleItems` is the root element, and everything in it is called a *category*.  
+All child elements in a category are called *category elements*.  
+  
+It may seem a bit confusing, but how the tool works is it loops through this root elements children (the categories), takes their name (in this case `FoodItems`), finds it recursively in the matching user config file (in this case, `ModItems.xml`), then loops through the categories children, (in this case, just the "Sloppy Joe Burger"), and adds it to the users config.  
+  
+It seems a bit confusing, but this allows you to write even 10 elements deep if required.  
+  
+### configList.ts
+Now that your config is split up into addons, you may fork this repository, and start editing `configList.ts`.  
+`configList.ts` is where you define your configurations structure. So, things like the name, description, what addons it has, etc.  
+  
 Below is an example config `Burger Shot Pack`, as seen in `./public/configs/configList.ts`.  
 ```ts 
     {
@@ -65,8 +110,23 @@ Below is an example config `Burger Shot Pack`, as seen in `./public/configs/conf
         ]
     }
 ```
-It contains all the necessary information to create a config.  
-It's only addon, the "Sloppy Joe Burger", and it's config files can be found at `./public/configs/0/SloppyJoeBurger/`.
+  
+You should create your configuration at the bottom of the list.  
+Here are the config fields explained:  
+- `id`: A number that should always be 1 integer higher than the one that came before it.
+- `title`: Can be any name you want, just don't use slurs or something.
+- `description`: Here you should accurately and concisely describe what your configuration adds.
+- `author`: Can be any of your names / usernames. I just put my Discord.
+- `modVersion`: The version of the mod that this configuration was created for.
+  
+#### Addon List
+The `addons` field in the config should be self explanatory, but for the sake of covering all cases i'll go over it anyway.
+- `id`: A number that is relative to how many addons you have in your config. So, the first addon in *your* config will be id 0, and so on and so forth.
+- `name`: Can be any name you want.
+- `description`: Describe accurately and concise what things this addon adds. Also make note of if it *overrides* anything in the base-configs.
+- `addonFolderName`: the folder name of where the addon will live. For example, the `GANG_A` addon folder from our "LC Gang Pack".
+- `addonFolerFiles`: The list of filenames for this addon. `ModItems.xml`, `Gangs.xml`, etc.
+- `isRequired`: Whether or not the user can choose to not install this addon when installing your config. You must always have at least ONE required addon in your config.
 
 ## Important Notes
 If your config re-writes things, please **tell the user** in your config/addon description what you are re-writing.  
@@ -147,7 +207,7 @@ For example, in the `SloppyJoeBurger`'s `ModItems.xml`:
 </PossibleItems>
 ```
 
-### How the Updater works.
+## How the Updater works.
 #### Parsing
 The updater starts by parsing every config file provided by the user.  
 
