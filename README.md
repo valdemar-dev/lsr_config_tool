@@ -29,17 +29,24 @@ Every addon of your config should have it's *own config files*
 Take the time now to split up your config into addon folders.
   
 As an example, the "LC Gang Pack", split up into folders might look something like this.
-1. /GANG_A/
-  - Gangs.xml
-2. /GANG_B/
-  - Gangs.xml
-3. /GANG_C/
-  - Gangs.xml
-4. /GANG_D/
-  - Gangs.xml
-5. /GANG_E/
-  - Gangs.xml
-
+```
+  /(YOUR CONFIG ID)/
+    /GANG_A/
+      - Gangs.xml
+      - Locations.xml
+    /GANG_B/
+      - Gangs.xml
+      - Locations.xml
+    /GANG_C/
+      - Gangs.xml
+      - Locations.xml
+    /GANG_D/
+      - Gangs.xml
+      - Locations.xml
+    /GANG_E/
+      - Gangs.xml
+      - Locations.xml 
+```
 #### Addon Files
 When creating the files for your addon, only include the top-level element, and whichever element group you wish to add to.  
   
