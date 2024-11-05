@@ -114,6 +114,16 @@ Below is an example config `Burger Shot Pack`, as seen in `./public/configs/conf
                 ],
                 isRequired: true,
             },
+            {
+                id: 1,
+                name: "Nuka Cola",
+                description: "The nuka cola drink.",
+                addonFolderName: "NukaCola",
+                addonFolderFiles: [
+                    "ModItems.xml",
+                ],
+                isRequired: false,
+            },
         ]
     }
 ```
@@ -134,7 +144,13 @@ The `addons` field in the config should be self explanatory, but for the sake of
 - `addonFolderName`: the folder name of where the addon will live. For example, the `GANG_A` addon folder from our "LC Gang Pack".
 - `addonFolerFiles`: The list of filenames for this addon. `ModItems.xml`, `Gangs.xml`, etc.
 - `isRequired`: Whether or not the user can choose to not install this addon when installing your config. You must always have at least ONE required addon in your config.
-
+  
+Once you've added your config into the config list, you may proceed.  
+Now, create a folder in `/public/configs/` which has the name of your config ID, (0 for the Burger Shot Pack example).  
+Then, into your new config folder, add the addon folders you split your config up into. (For the burger shot pack, "SloppyJoeBurger" and "NukaCola").  
+  
+Lastly, make sure to check that everything matches the general structure of the example configuration (or any others that may have been added).  
+Once that's done, commit your changes to your forked repository, and make a pull request!  
 ## Important Notes
 If your config re-writes things, please **tell the user** in your config/addon description what you are re-writing.  
 Your config XMLs should contain the basic structure of whichever file you're wishing to add to.
